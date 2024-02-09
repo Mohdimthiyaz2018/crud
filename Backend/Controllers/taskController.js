@@ -21,10 +21,11 @@ exports.readAllTask = catchAsyncError( async (req,res, next) => {
     {
         return next(new errorHandler("No tasks found!",404));
     }
+    // await new Promise(resolve => setTimeout(resolve, 3000));
     res.status(200).json({
         success: true,
         message: "All tasks",
-        t1
+        data: t1
     });
 } )
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .task-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .task-item {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .task-item button {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .task-item button:hover {
+        background-color: #0056b3;
+      }
+
+      .task-item input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .add-task-form {
+        margin-top: 20px;
+        display: flex;
+      }
+
+      .add-task-form input[type="text"] {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .add-task-form button {
+        padding: 5px 10px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .add-task-form button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Task Management</h1>
+      <ul class="task-list">
+        <li class="task-item">
+          <input type="checkbox" id="task1" />
+          <label for="task1">Task 1</label>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+        <li class="task-item">
+          <input type="checkbox" id="task2" />
+          <label for="task2">Task 2</label>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+        <li class="task-item">
+          <input type="checkbox" id="task3" />
+          <label for="task3">Task 3</label>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+      </ul>
+      <form class="add-task-form">
+        <input
+          type="text"
+          id="newTaskInput"
+          placeholder="Enter task description"
+        />
+        <button type="button" id="addTaskButton">Add Task</button>
+      </form>
+    </div>
+    <script>
+      document
+        .getElementById("addTaskButton")
+        .addEventListener("click", function () {
+          var input = document.getElementById("newTaskInput");
+          var taskList = document.querySelector(".task-list");
+
+          if (input.value.trim() !== "") {
+            var newTask = document.createElement("li");
+            newTask.className = "task-item";
+            newTask.innerHTML = `
+                    <input type="checkbox">
+                    <label>${input.value}</label>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                `;
+            taskList.appendChild(newTask);
+            input.value = "";
+          } else {
+            alert("Please enter a task description.");
+          }
+        });
+    </script>
+  </body>
+</html>
